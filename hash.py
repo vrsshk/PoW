@@ -1,6 +1,6 @@
 from transform import *
 
-def hash256(M: str) -> str:
+def hash(M: str) -> str:
     """
     Реализация хэш-функции с длиной хэш-кода 256 бит.
     M — сообщение в виде битовой строки (str из '0' и '1')
