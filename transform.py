@@ -100,7 +100,6 @@ C_HEX = [
 C = [format(int(x, 16), '0512b') for x in C_HEX]
 
 # 6 Преобразования
-
 def S(bits: str) -> str:
     assert len(bits) == 512
     return ''.join(pi_transform(bits[i*8:(i+1)*8]) for i in range(64))
@@ -134,3 +133,13 @@ def E(K: str, m: str) -> str:
 def g_N(h: str, m: str, N: str) -> str:
     K = L(P(S(X(h, N))))
     return X(X(E(K, m), h), m)
+
+# Дополнительные функции
+def int_to_bits(n: int, length: int = 512) -> str:
+    return f"{n:0{length}b}"
+
+def bin_to_hex(bin_str: str) -> str:
+    return hex(int(bin_str, 2))[2:].zfill(len(bin_str) // 4)
+
+def add_mod512(a: str, b: str) -> str:
+    return int_to_bits((int(a, 2) + int(b, 2)) % (1 << 512))
