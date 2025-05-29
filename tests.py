@@ -1,5 +1,7 @@
 import unittest
 from hash import hash
+from schnorr import *
+from prng import prng
 
 class TestHash256(unittest.TestCase):
     def test_1(self):
@@ -15,6 +17,27 @@ class TestHash256(unittest.TestCase):
         H_2 = "508f7e553c06501d749a66fc28c6cac0b005746d97537fa85d9e40904efed29d"
         result_hex = f'{int(hash(M_2), 2):064x}'
         self.assertEqual(result_hex.lower(), H_2.lower())
+
+class TestSchnorrSignature(unittest.TestCase):
+    def test_signature_verification(self):
+        bits = prng(2)
+        x = int(bits[0], 2) % q
+        r = int(bits[1], 2) % q
+
+        message = "Привет от Ворощук Анны"
+        signature, public_key = sign(message, x, r)
+        self.assertTrue(verify(message, public_key, signature))
+
+    def test_modified_message_should_fail(self):
+        bits = prng(2)
+        x = int(bits[0], 2) % q
+        r = int(bits[1], 2) % q
+
+        message = "Привет от Ворощук Анны"
+        modified_message = "Привет от Иванова Ивана"
+
+        signature, public_key = sign(message, x, r)
+        self.assertFalse(verify(modified_message, public_key, signature))
 
 if __name__ == '__main__':
     unittest.main()
