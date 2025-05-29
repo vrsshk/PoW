@@ -143,3 +143,6 @@ def bin_to_hex(bin_str: str) -> str:
 
 def add_mod512(a: str, b: str) -> str:
     return int_to_bits((int(a, 2) + int(b, 2)) % (1 << 512))
+
+def str_to_bits(s: str) -> str:
+    return ''.join(f'{ord(c):08b}' for c in s)
