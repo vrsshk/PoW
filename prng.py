@@ -1,4 +1,4 @@
-from hash import hash
+from hash import hash_1
 
 def prng(count: int):
     """
@@ -16,7 +16,7 @@ def prng(count: int):
         bits = bits[:512]
 
     # Нулевой цикл - получаем h0
-    h0 = hash(bits)
+    h0 = hash_1(bits)
 
     random_numbers = []
 
@@ -25,7 +25,7 @@ def prng(count: int):
         # Формируем вход: h0 (256 бит) + i в 256 бит
         i_bits = f'{i:0256b}'
         input_bits = h0 + i_bits
-        h_i = hash(input_bits)
+        h_i = hash_1(input_bits)
         random_numbers.append(h_i)
 
     return random_numbers

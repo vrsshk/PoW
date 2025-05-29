@@ -1,4 +1,4 @@
-from hash import hash 
+from hash import hash_1
 from prng import prng
 from transform import int_to_bits, str_to_bits
 from sympy import isprime
@@ -16,7 +16,7 @@ def sign(message: str, x: int, r: int) -> tuple:
     P = pow(a, x, p) # открытый ключ
 
     h_input = int_to_bits(R) + int_to_bits(P) + str_to_bits(message)
-    e = int(hash(h_input), 2) % q
+    e = int(hash_1(h_input), 2) % q
     s = (r + e * x) % q
 
     return (R, s), P
@@ -26,7 +26,7 @@ def verify(message: str, P: int, signature: tuple) -> bool:
     R, s = signature
 
     h_input = int_to_bits(R) + int_to_bits(P) + str_to_bits(message)
-    e = int(hash(h_input), 2) % q
+    e = int(hash_1(h_input), 2) % q
 
     left = pow(a, s, p)
     right = (R * pow(P, e, p)) % p
