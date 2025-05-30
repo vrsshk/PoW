@@ -1,7 +1,7 @@
 from hash import hash_1
 from prng import prng
 from transform import int_to_bits, str_to_bits
-from sympy import isprime
+# from sympy import isprime
 
 # Параметры из ГОСТ Р 34.10-94
 p = int("EE8172AE8996608FB69359B89EB82A69854510E2977A4D63BC97322CE5DC3386EA0A12B343E9190F23177539845839786BB0C345D165976EF2195EC9B1C379E3", 16)
