@@ -1,6 +1,5 @@
 from hash import hash_1
 
-
 class MerkleTree:
     def __init__(self, transactions):
         self.transactions = transactions
@@ -93,12 +92,12 @@ transactions = [
     "Подписанная транзакция 2",
     "Подписанная транзакция 3",
     "Подписанная транзакция 4",
-    "Безверженко Ворощук"  # Транзакция с именем
+    "Безверженко Игорь"  # Транзакция с именем
 ]
 
 tree = MerkleTree(transactions)
 print("Корень Меркла:", tree.get_root())
 
 # Проверка транзакции с именем
-tx = "Безверженко Ворощук"
+tx = "Безверженко Игорь"
 print(f"Транзакция '{tx}' валидна:", tree.verify_transaction(tx))
