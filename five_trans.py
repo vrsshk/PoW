@@ -4,7 +4,7 @@ def generate_data(count:int):
     """Генерируем содержимое файлов"""
     tmp = []
     count = count * 6.25
-    random_data = prng(int(count) + 1)
+    random_data = prng(int(count))
     # Работаем над файлом с именем студента (если меньше -> прибовляем, если меньше -> убираем)
     name = "Безверженко Игорь"
     name_trans = ''.join(f'{b:08b}' for b in name.encode('utf-8'))
